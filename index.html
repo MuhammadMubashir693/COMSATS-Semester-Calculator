@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0b1220" />
+    <title>COMSATS Semester Calculator</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="page">
+      <div class="topline"><span class="topline-mark">C</span> Student planning tool</div>
+      <h1>COMSATS Semester Calculator</h1>
+      <p class="intro">Enter your batch and the current semester to estimate your academic standing, account for freezes, and plan your degree timeline.</p>
+
+      <div class="layout">
+        <section class="card form-card" aria-labelledby="form-title">
+          <h2 id="form-title">Enter your batch details</h2>
+          <p class="section-copy">Choose your batch and the current academic term. Freeze each Spring/Fall term that you took off.</p>
+
+          <form id="calculator-form" novalidate>
+            <div class="field-row">
+              <div class="field">
+                <label for="batch-year">Batch year</label>
+                <input id="batch-year" name="batch-year" type="number" min="2000" step="1" required />
+              </div>
+              <div class="field">
+                <label for="intake">Intake semester</label>
+                <select id="intake" name="intake">
+                  <option value="spring">Spring</option>
+                  <option value="fall">Fall</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="field-row">
+              <div class="field">
+                <label for="current-year">Current semester year</label>
+                <input id="current-year" name="current-year" type="number" min="2000" step="1" required />
+              </div>
+              <div class="field">
+                <label for="current-season">Current semester</label>
+                <select id="current-season" name="current-season">
+                  <option value="spring">Spring</option>
+                  <option value="fall">Fall</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="freeze-heading">
+              <span class="field-label">Frozen semesters</span>
+              <button class="text-button" id="add-freeze" type="button">+ Add a freeze</button>
+            </div>
+            <p class="help">Add the year and Spring/Fall semester for each freeze. Maximum 4 freezes; no more than 2 consecutive semesters.</p>
+            <div class="freeze-list" id="freeze-list" aria-live="polite"></div>
+            <p class="empty-freezes" id="empty-freezes">No freezes added.</p>
+
+            <div class="check-row">
+              <input id="passed-out" name="passed-out" type="checkbox" />
+              <label for="passed-out">I passed out after the 8th semester
+                <small>When checked, the result shows that you passed out in semester 8.</small>
+              </label>
+            </div>
+
+            <div class="alert" id="error-message" role="alert"></div>
+            <button class="calculate-button" type="submit">Calculate my semester</button>
+          </form>
+        </section>
+
+        <aside class="card result-card" aria-live="polite" aria-labelledby="result-title">
+          <p class="result-eyebrow" id="result-eyebrow">Your estimate</p>
+          <h2 class="result-title" id="result-title">Your semester will appear here</h2>
+          <p class="result-subtitle" id="result-subtitle">Enter your batch, current semester, and any freezes to see your standing.</p>
+          <div id="result-metrics"></div>
+          <p class="result-note" id="result-note">Every Spring/Fall term counts toward progression unless that year and semester is marked as a freeze.</p>
+        </aside>
+      </div>
+      <p class="footer-note">This is an estimate based on batch timing and the freezes you enter; confirm your official academic standing with your campus.</p>
+    </main>
+
+    <script src="main.js" defer></script>
+  </body>
+</html>
