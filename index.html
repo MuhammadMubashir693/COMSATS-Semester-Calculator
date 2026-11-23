@@ -55,13 +55,6 @@
             <div class="freeze-list" id="freeze-list" aria-live="polite"></div>
             <p class="empty-freezes" id="empty-freezes">No freezes added.</p>
 
-            <div class="check-row">
-              <input id="passed-out" name="passed-out" type="checkbox" />
-              <label for="passed-out">I passed out after the 8th semester
-                <small>When checked, the result shows that you passed out in semester 8.</small>
-              </label>
-            </div>
-
             <div class="alert" id="error-message" role="alert"></div>
             <button class="calculate-button" type="submit">Calculate my semester</button>
           </form>
@@ -75,6 +68,48 @@
           <p class="result-note" id="result-note">Every Spring/Fall term counts toward progression unless that year and semester is marked as a freeze.</p>
         </aside>
       </div>
+      <section class="card semester-planner" aria-labelledby="planner-title">
+        <h2 id="planner-title">Calculate another semester</h2>
+        <p class="section-copy">Choose one semester, then add or subtract 1 to 11 semesters. This calculation is separate from the current-semester estimate above.</p>
+
+        <form id="semester-planner-form" novalidate>
+          <div class="planner-grid">
+            <div class="field">
+              <label for="planner-input-year">Input semester year</label>
+              <input id="planner-input-year" name="planner-input-year" type="number" min="2000" max="2100" step="1" required />
+            </div>
+            <div class="field">
+              <label for="planner-input-season">Input semester</label>
+              <select id="planner-input-season" name="planner-input-season">
+                <option value="spring">Spring</option>
+                <option value="fall">Fall</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="semester-offset">Add or subtract semesters</label>
+              <input id="semester-offset" name="semester-offset" type="number" min="-11" max="11" step="1" value="1" required />
+              <small class="field-help">Use −11 through −1 or 1 through 11. Zero is not allowed.</small>
+            </div>
+          </div>
+
+          <div class="freeze-heading">
+            <span class="field-label">Frozen semesters</span>
+            <button class="text-button" id="add-planner-freeze" type="button">+ Add a freeze</button>
+          </div>
+          <p class="help">Add freezes between the input and calculated target semester. Maximum 4 freezes.</p>
+          <div class="freeze-list" id="planner-freeze-list" aria-live="polite"></div>
+          <p class="empty-freezes" id="planner-empty-freezes">No freezes added.</p>
+
+          <div class="alert" id="planner-error-message" role="alert"></div>
+          <button class="calculate-button" type="submit">Calculate target semester</button>
+        </form>
+
+        <div class="planner-result" id="planner-result" aria-live="polite">
+          <p class="result-eyebrow">Target result</p>
+          <h3 id="planner-result-title">Your target semester will appear here</h3>
+          <div id="planner-result-metrics"></div>
+        </div>
+      </section>
       <p class="footer-note">This is an estimate based on batch timing and the freezes you enter; confirm your official academic standing with your campus.</p>
     </main>
 

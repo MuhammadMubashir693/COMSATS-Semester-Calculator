@@ -184,20 +184,36 @@ input:focus, select:focus {
 .remove-button:hover { border-color: #f87171; color: #fca5a5; }
 .empty-freezes { margin: 0 0 18px; color: var(--muted); font-size: .83rem; }
 
-.check-row {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  margin: 7px 0 20px;
-  padding: 13px;
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  background: #17243a;
+.semester-planner {
+  grid-column: 1 / -1;
+  padding: clamp(21px, 4vw, 32px);
+  margin-top: 22px;
 }
 
-.check-row input { width: 17px; height: 17px; margin: 1px 0 0; accent-color: var(--blue); }
-.check-row label { margin: 0; line-height: 1.4; }
-.check-row small { display: block; margin-top: 3px; color: var(--muted); font-size: .76rem; font-weight: 400; }
+.planner-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.field-help {
+  display: block;
+  margin-top: 7px;
+  color: var(--muted);
+  font-size: .75rem;
+  line-height: 1.4;
+}
+
+.planner-result {
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+}
+
+.planner-result h3 {
+  margin: 0 0 12px;
+  font-size: 1.35rem;
+}
 
 .calculate-button {
   width: 100%;
@@ -295,9 +311,11 @@ input:focus, select:focus {
   .page { padding-top: 30px; }
   .layout { grid-template-columns: 1fr; }
   .result-card { position: static; }
+  .planner-grid { grid-template-columns: 1fr 1fr; }
 }
 
 @media (max-width: 480px) {
   .field-row { grid-template-columns: 1fr; gap: 0; }
+  .planner-grid { grid-template-columns: 1fr; }
   .page { width: min(100% - 24px, 1020px); }
 }
